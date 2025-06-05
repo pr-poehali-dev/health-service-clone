@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "@/components/ui/icon";
+import AppointmentModal from "./AppointmentModal";
 
 const Header = () => {
   return (
@@ -37,10 +38,12 @@ const Header = () => {
             >
               Контакты
             </a>
-            <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center space-x-2">
-              <Icon name="Calendar" size={16} />
-              <span>Записаться</span>
-            </button>
+            <AppointmentModal>
+              <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center space-x-2">
+                <Icon name="Calendar" size={16} />
+                <span>Записаться</span>
+              </button>
+            </AppointmentModal>
           </nav>
 
           <button className="md:hidden">

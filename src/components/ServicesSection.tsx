@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "@/components/ui/icon";
+import ServiceModal from "./ServiceModal";
 
 const ServicesSection = () => {
   const services = [
@@ -76,10 +77,12 @@ const ServicesSection = () => {
               <p className="text-gray-600 leading-relaxed">
                 {service.description}
               </p>
-              <button className="mt-6 text-blue-500 font-medium hover:text-blue-600 transition-colors flex items-center space-x-2">
-                <span>Подробнее</span>
-                <Icon name="ArrowRight" size={16} />
-              </button>
+              <ServiceModal service={service}>
+                <button className="mt-6 text-blue-500 font-medium hover:text-blue-600 transition-colors flex items-center space-x-2">
+                  <span>Подробнее</span>
+                  <Icon name="ArrowRight" size={16} />
+                </button>
+              </ServiceModal>
             </div>
           ))}
         </div>

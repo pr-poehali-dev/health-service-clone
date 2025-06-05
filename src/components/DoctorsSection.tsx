@@ -1,5 +1,7 @@
 import React from "react";
 import Icon from "@/components/ui/icon";
+import DoctorModal from "./DoctorModal";
+import AppointmentModal from "./AppointmentModal";
 
 const DoctorsSection = () => {
   const doctors = [
@@ -43,46 +45,53 @@ const DoctorsSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {doctors.map((doctor, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="relative mb-6">
-                <img
-                  src={doctor.image}
-                  alt={doctor.name}
-                  className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
-                />
-                <div className="absolute -bottom-2 -right-2 bg-green-500 text-white rounded-full p-2">
-                  <Icon name="CheckCircle" size={20} />
+            <DoctorModal doctor={doctor}>
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
+                <div className="relative mb-6">
+                  <img
+                    src={doctor.image}
+                    alt={doctor.name}
+                    className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
+                  />
+                  <div className="absolute -bottom-2 -right-2 bg-green-500 text-white rounded-full p-2">
+                    <Icon name="CheckCircle" size={20} />
+                  </div>
                 </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-2 font-montserrat">
+                  {doctor.name}
+                </h3>
+                <p className="text-blue-500 font-medium mb-2">
+                  {doctor.specialty}
+                </p>
+                <p className="text-gray-600 mb-4">{doctor.experience}</p>
+
+                <div className="flex items-center justify-center space-x-1 mb-6">
+                  <Icon
+                    name="Star"
+                    size={16}
+                    className="text-yellow-400 fill-current"
+                  />
+                  <span className="text-gray-900 font-medium">
+                    {doctor.rating}
+                  </span>
+                  <span className="text-gray-500">/ 5.0</span>
+                </div>
+
+                <AppointmentModal
+                  doctorName={doctor.name}
+                  specialty={doctor.specialty}
+                >
+                  <button className="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2">
+                    <Icon name="Calendar" size={16} />
+                    <span>Записаться на приём</span>
+                  </button>
+                </AppointmentModal>
               </div>
-
-              <h3 className="text-xl font-bold text-gray-900 mb-2 font-montserrat">
-                {doctor.name}
-              </h3>
-              <p className="text-blue-500 font-medium mb-2">
-                {doctor.specialty}
-              </p>
-              <p className="text-gray-600 mb-4">{doctor.experience}</p>
-
-              <div className="flex items-center justify-center space-x-1 mb-6">
-                <Icon
-                  name="Star"
-                  size={16}
-                  className="text-yellow-400 fill-current"
-                />
-                <span className="text-gray-900 font-medium">
-                  {doctor.rating}
-                </span>
-                <span className="text-gray-500">/ 5.0</span>
-              </div>
-
-              <button className="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2">
-                <Icon name="Calendar" size={16} />
-                <span>Записаться на приём</span>
-              </button>
-            </div>
+            </DoctorModal>
           ))}
         </div>
       </div>

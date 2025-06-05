@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "@/components/ui/icon";
+import AppointmentModal from "./AppointmentModal";
 
 const Hero = () => {
   return (
@@ -16,10 +17,12 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="bg-blue-500 text-white px-8 py-4 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2 text-lg font-medium">
-                <Icon name="Calendar" size={20} />
-                <span>Записаться на приём</span>
-              </button>
+              <AppointmentModal>
+                <button className="bg-blue-500 text-white px-8 py-4 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2 text-lg font-medium">
+                  <Icon name="Calendar" size={20} />
+                  <span>Записаться на приём</span>
+                </button>
+              </AppointmentModal>
               <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-gray-400 transition-colors flex items-center justify-center space-x-2 text-lg font-medium">
                 <Icon name="Phone" size={20} />
                 <span>Связаться с нами</span>
